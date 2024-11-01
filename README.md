@@ -1,6 +1,7 @@
 # 浏览器控制台玩扫雷
 上班摸鱼使用浏览器F12 Console控制台进行扫雷游戏操作。  
-既然有敲键盘的动作又有停留片刻的思考，让周围同事和领导感觉你在工作。(喜欢的话请给star)  
+既然有敲键盘的动作又有停留片刻的思考，让周围同事和领导感觉你在工作。(喜欢的话请给star)    
+github地址 [https://github.com/dearDreamWeb/browser_console_minesweeper_gird](https://github.com/dearDreamWeb/browser_console_minesweeper_gird)  
 ![](https://raw.githubusercontent.com/dearDreamWeb/picture/main/others/browser_console_minesweeper_gird_4.png)  
 ![](https://raw.githubusercontent.com/dearDreamWeb/picture/main/others/browser_console_minesweeper_gird_5.png)
 
