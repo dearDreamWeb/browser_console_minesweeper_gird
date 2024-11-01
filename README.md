@@ -4,6 +4,14 @@
 ![](https://raw.githubusercontent.com/dearDreamWeb/picture/main/others/browser_console_minesweeper_gird_4.png)  
 ![](https://raw.githubusercontent.com/dearDreamWeb/picture/main/others/browser_console_minesweeper_gird_5.png)
 
+# 玩法操作
+```
+mines.help() 查看帮助文档
+mines.start() 开始游戏
+mines.nextStep(row,col): 下一步。两个参数: row:第几行;col:第几列。从0开始计数
+mines.setSettings(rows,cols,mines): 设置参数，三个参数: rows:生成的行数;cols:生成的列数;mines:生成的地雷数
+mines.logGrid(): 当前状态
+```
 # 使用方式
 ## 第一种
 最简单粗暴，把[index.js](./index.js)中的代码复制粘贴到Console中就能使用了。
