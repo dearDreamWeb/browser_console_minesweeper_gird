@@ -17,6 +17,8 @@ mines.nextStep(row,col): 下一步。两个参数: row:第几行;col:第几列�
 mines.setSettings(rows,cols,mines): 设置参数，三个参数: rows:生成的行数;cols:生成的列数;mines:生成的地雷数
 mines.logGrid(): 当前状态
 ```
+如下图：
+![](https://raw.githubusercontent.com/dearDreamWeb/picture/main/others/browser_console_minesweeper_gird_6.png)
 
 # 浏览器控制台玩1024游戏
 经典的1024游戏。
