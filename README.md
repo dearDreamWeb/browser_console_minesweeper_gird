@@ -1,3 +1,7 @@
+# 浏览器玩游戏
+目前实现游戏：
+- 扫雷
+- 1024
 # 浏览器控制台玩扫雷
 上班摸鱼使用浏览器F12 Console控制台进行扫雷游戏操作。  
 既然有敲键盘的动作又有停留片刻的思考，让周围同事和领导感觉你在工作。(喜欢的话请给star)    
@@ -13,6 +17,17 @@ mines.nextStep(row,col): 下一步。两个参数: row:第几行;col:第几列�
 mines.setSettings(rows,cols,mines): 设置参数，三个参数: rows:生成的行数;cols:生成的列数;mines:生成的地雷数
 mines.logGrid(): 当前状态
 ```
+
+# 浏览器控制台玩1024游戏
+经典的1024游戏。
+# 玩法
+```
+game1024.help() 查看帮助文档
+game1024.start() 开始游戏
+game1024.nextStep(direction): 下一步。direction: w向上；s向下；a向左；d向右
+game1024.logGrid(): 当前状态
+```
+
 # 使用方式
 ## 第一种
 最简单粗暴，把[index.js](./index.js)中的代码复制粘贴到Console中就能使用了。

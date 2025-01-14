@@ -210,3 +210,135 @@ logGrid(): 当前状态
     }
 }
 window.mines = new MinesweeperGrid()
+
+
+class Game1024 {
+    constructor() {
+        this.board = []
+        this.isOver = false
+    }
+    start() {
+        this.isOver = false;
+        this.board = new Array(4).fill(0).map(() => new Array(4).fill(0))
+        this.addNumberAndDraw()
+    }
+    nexStep(direction) {
+        if (!['w', 's', 'a', 'd'].includes(direction)) {
+            console.log('参数输入：w s a d')
+            return
+        }
+        if (this.isOver) {
+            console.log('please restart game')
+            return
+        }
+        this.combind(direction)
+    }
+    help() {
+        console.log(`
+start(): 开始游戏
+nextStep(direction): 下一步。direction: w向上；s向下；a向左；d向右
+logGrid(): 当前状态
+        `);
+    }
+    /**
+     * 显示界面
+     */
+    logGrid() {
+        let maxStrLen = 1
+        this.board.flat().forEach((item) => {
+            maxStrLen = Math.max(maxStrLen, String(item).length)
+        })
+        let str = ``;
+        // console.log('logGrid', this.originGrid, this.showGrid);
+        this.board.forEach((subList) => {
+            let subStr = ``;
+            subList.forEach((item) => {
+                subStr += `${item}`.padEnd(maxStrLen + 1, ' ');
+            });
+            str += `${subStr}\n`;
+        });
+        console.log(str);
+    }
+
+    isWin() {
+        return this.board.flat().some((item) => item >= 1024)
+    }
+
+    addNumberAndDraw() {
+        let available = this.board.flatMap((row, i) => row.map((v, j) => v === 0 ? [i, j] : null).filter(v => v !== null))
+        if (available.length === 0) return;
+        let [newI, newJ] = available[Math.floor(Math.random() * available.length)]
+        this.board[newI][newJ] = 2
+        this.logGrid()
+        return [newI, newJ]
+    }
+
+    combind(direction) {
+        let mergeX = (i, j, k) => {
+            if (this.board[k][j] !== 0) {
+                if (this.board[i][j] === 0) {
+                    this.board[i][j] = this.board[k][j]
+                    this.board[k][j] = 0
+                } else if (this.board[i][j] === this.board[k][j]) {
+                    this.board[i][j] *= 2
+                    this.board[k][j] = 0
+                }
+            }
+        }
+        let mergeY = (i, j, k) => {
+            if (this.board[i][k] !== 0) {
+                if (this.board[i][j] === 0) {
+                    this.board[i][j] = this.board[i][k]
+                    this.board[i][k] = 0
+                } else if (this.board[i][j] === this.board[i][k]) {
+                    this.board[i][j] *= 2
+                    this.board[i][k] = 0
+                }
+            }
+        }
+        if (direction === 'w') {
+            for (let i = 0; i < this.board.length; i++) {
+                for (let j = 0; j < this.board[i].length; j++) {
+                    for (let k = i + 1; k < this.board.length; k++) {
+                        mergeX(i, j, k)
+                    }
+                }
+            }
+        } else if (direction === 's') {
+            for (let i = this.board.length - 1; i >= 0; i--) {
+                for (let j = 0; j < this.board[i].length; j++) {
+                    for (let k = i - 1; k >= 0; k--) {
+                        mergeX(i, j, k)
+                    }
+                }
+            }
+        } else if (direction === 'a') {
+            for (let i = 0; i < this.board.length; i++) {
+                for (let j = 0; j < this.board[i].length; j++) {
+                    for (let k = j + 1; k < this.board[i].length; k++) {
+                        mergeY(i, j, k)
+                    }
+                }
+            }
+        } else if (direction === 'd') {
+            for (let i = 0; i < this.board.length; i++) {
+                for (let j = this.board[i].length - 1; j >= 0; j--) {
+                    for (let k = j - 1; k >= 0; k--) {
+                        mergeY(i, j, k)
+                    }
+                }
+            }
+        }
+        if (this.addNumberAndDraw() == undefined) {
+            this.logGrid()
+        }
+
+        if (this.isWin()) {
+            this.isOver = true;
+            console.log('you are win')
+            return
+        }
+    }
+}
+
+window.game1024 = new Game1024()
